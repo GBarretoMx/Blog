@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magebarrett_blog" resource="default" engine="innodb" comment="MageBarrett Blog Table">
+        <column xsi:type="int" name="blog_id" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="255"
+                comment="Blog Post Title"/>
+        <column xsi:type="varchar" name="content_heading" nullable="true" length="255"
+                comment="Blog Post Content Heading"/>
+        <column xsi:type="mediumtext" name="content" nullable="true"
+                comment="Blog Post Content"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Blog Post Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Blog Post Modification Time"/>
+        <column xsi:type="smallint" name="is_active" unsigned="false" nullable="false" identity="false"
+                default="1" comment="Is Page Active"/>
+        <column xsi:type="smallint" name="sort_order" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Blog Post Sort Order"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id"/>
+        </constraint>
+        <index referenceId="MAGEBARRETT_BLOG_TITLE_CONTENT" indexType="fulltext">
+            <column name="title"/>
+            <column name="content"/>
+        </index>
+    </table>
+</schema>

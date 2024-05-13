@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MageBarrett_Blog::blog_content"
+             title="Blog"
+             translate="title"
+             module="MageBarrett_Blog"
+             sortOrder="0"
+             resource="MageBarrett_Blog::blog_content"
+             parent="Magento_Backend::content"
+        />
+        <add id="MageBarrett_Blog::post_index"
+             title="Manage Post"
+             module="MageBarrett_Blog"
+             sortOrder="10"
+             resource="MageBarrett_Blog::post_index"
+             parent="MageBarrett_Blog::blog_content"
+             action="magebarrett_blog/blog/index"
+        />
+    </menu>
+</config>
