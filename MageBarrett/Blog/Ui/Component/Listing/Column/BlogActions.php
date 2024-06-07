@@ -37,11 +37,10 @@ class BlogActions extends Column
             foreach ($dataSource['data']['items'] as & $item) {
                 $name = $this->getData('name');
                 if (isset($item['blog_id'])){
-                    /*$item[$name]['edit'] = [
+                    $item[$name]['edit'] = [
                         'href' => $this->urlBuilder->getUrl(self::BLOG_URL_PATH_EDIT, ['blog_id' => $item['blog_id']]),
                         'label' => __('Edit'),
-                    ];*/
-
+                    ];
                     $title = $item['title'];
                     $item[$name]['delete'] = [
                         'href' => $this->urlBuilder->getUrl(self::BLOG_URL_PATH_DELETE, ['blog_id' => $item['blog_id']]),

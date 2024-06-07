@@ -29,7 +29,7 @@
         <aclResource>MageBarrett_Blog::blog_content</aclResource>
         <dataProvider name="magebarrett_blog_blog_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
             <settings>
-                <requestFieldName>id</requestFieldName>
+                <requestFieldName>blog_id</requestFieldName>
                 <primaryFieldName>blog_id</primaryFieldName>
             </settings>
         </dataProvider>

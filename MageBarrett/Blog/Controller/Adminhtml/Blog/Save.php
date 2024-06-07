@@ -42,6 +42,27 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($this->getRequest()->getPostValue()) {
             try {
+                $blog_id = $this->getRequest()->getParam('blog_id');
+                $title = $this->getRequest()->getParam('title');
+                $content_heading = $this->getRequest()->getParam('content_heading');
+                $content = $this->getRequest()->getParam('content');
+                $is_active = $this->getRequest()->getParam('is_active');
+                $sort_order = $this->getRequest()->getParam('sort_order');
+
+                if (isset($blog_id) && $blog_id > 0) {
+                    $editModel = $this->blogRepository->getById($blog_id);
+                    $editModel->setTitle((string) $title);
+                    $editModel->setContentHeading((string) $content_heading);
+                    $editModel->setContent((string) $content);
+                    $editModel->setIsActive((bool) $is_active);
+                    $editModel->setSortOrder((int) $sort_order);
+                    $this->blogRepository->save($editModel);
+                    $this->messageManager->addSuccessMessage(__('Post edit successfully.'));
+                    $resultRedirect->setPath('magebarrett_blog/blog/index');
+                    return $resultRedirect;
+                }
+
+
                 /**
                  * @var Blog $model
                  */
@@ -53,7 +74,7 @@ class Save extends Action implements HttpPostActionInterface
                 $model->setContentHeading((string) $this->getRequest()->getParam('content_heading'));
                 $this->blogRepository->save($model);
 
-                $this->messageManager->addSuccessMessage(__('You saved the blog.'));
+                $this->messageManager->addSuccessMessage(__('You saved the post.'));
             } catch (\Exception $exception){
                 $this->messageManager->addErrorMessage($exception->getMessage());
             }

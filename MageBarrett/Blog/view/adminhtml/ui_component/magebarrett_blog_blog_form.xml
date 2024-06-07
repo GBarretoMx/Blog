@@ -4,20 +4,21 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">magebarrett_blog_blog_form.magebarrett_blog_blog_form_data_source</item>
-            <item name="deps" xsi:type="string">magebarrett_blog_blog_form.magebarrett_blog_blog_form_data_source</item>
+            <!--<item name="deps" xsi:type="string">magebarrett_blog_blog_form.magebarrett_blog_blog_form_data_source</item>-->
         </item>
         <item name="label" xsi:type="string" translate="true">Post Information</item>
-        <item name="config" xsi:type="array">
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <!--<item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
             <item name="namespace" xsi:type="string">magebarrett_blog_blog_form</item>
-        </item>
-        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        </item>-->
     </argument>
     <settings>
         <buttons>
             <button name="save" class="MageBarrett\Blog\Block\Adminhtml\FormPost\Edit\SaveButton"/>
             <button name="back" class="MageBarrett\Blog\Block\Adminhtml\FormPost\Edit\BackButton"/>
         </buttons>
+        <namespace>magebarrett_blog_blog_form</namespace>
         <dataScope>data</dataScope>
         <deps>
             <dep>magebarrett_blog_blog_form.magebarrett_blog_blog_form_data_source</dep>
@@ -41,7 +42,7 @@
     </dataSource>
     <fieldset name="post_form">
         <settings>
-            <label/>
+            <label>Post</label>
         </settings>
         <field name="blog_id" formElement="input">
             <argument name="data" xsi:type="array">

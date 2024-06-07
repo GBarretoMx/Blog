@@ -12,6 +12,11 @@ class DataProvider extends AbstractDataProvider
      */
     protected BlogCollectionFactory $blogCollectionFactory;
 
+    /**
+     * @var array
+     */
+    protected $loadedData;
+
     public function __construct(
         BlogCollectionFactory $blogCollectionFactory,
         $name,
@@ -27,7 +32,14 @@ class DataProvider extends AbstractDataProvider
 
     public function getData()
     {
-        return parent::getData();
+        if (isset($this->loadedData)) {
+            return $this->loadedData;
+        }
+        $items = $this->collection->getItems();
+        foreach ($items as $item) {
+            $this->loadedData[$item->getId()] = $item->getData();
+        }
+        return $this->loadedData;
     }
 
 }
