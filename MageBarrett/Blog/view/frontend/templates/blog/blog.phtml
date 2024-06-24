@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var \MageBarrett\Blog\Block\Pagination $block
+ * @var \MageBarrett\Blog\ViewModel\GridBlogPost $viewModel
+ */
+
+$collection = $block->getCollection();
+$viewModel  = $block->getData('grid_blog_post');
+
+?>
+
+<div class="title-blog-post">
+    <span><?php echo __('Latest Stories...'); ?></span>
+</div>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="pagination-order">
+        <?= $block->getPagerHtml(); ?>
+    </div>
+<?php endif; ?>
+<?php if ($collection && sizeof($collection)): ?>
+<div class="content-pagination">
+    <?php foreach ($collection as  $item): ?>
+        <a class="link-post" href="#">
+            <div class="content-post">
+                <div class="post-image">
+
+                </div>
+                <div class="post-title">
+                    <span><?= $viewModel->formatTitle($item->getTitle()) ?></span>
+                </div>
+            </div>
+        </a>
+    <?php endforeach; ?>
+</div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="pagination-order"><?=  $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('No any record.'); ?></span></div>
+<?php endif; ?>

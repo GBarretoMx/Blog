@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageBarrett_Blog::css/blog_post.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="MageBarrett\Blog\Block\Pagination"
+                   template="MageBarrett_Blog::blog/blog.phtml">
+                <arguments>
+                    <argument name="grid_blog_post" xsi:type="object">MageBarrett\Blog\ViewModel\GridBlogPost</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
